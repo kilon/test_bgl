@@ -79,7 +79,7 @@ def draw(self,context):
     bgl.glLineWidth(1)
     bgl.glDisable(bgl.GL_BLEND)
     bgl.glColor4f(0.0, 0.0, 0.0, 1.0)
-    iteration = iterations + 1
+    #iteration = iterations + 1
 
 class open_ephestos(bpy.types.Operator):
     bl_idname = "bg_test_button.modal"
@@ -106,6 +106,8 @@ class open_ephestos(bpy.types.Operator):
 
         if context.area.type == 'VIEW_3D' and running and not event.type in {'MOUSEMOVE',} :
             return  {'PASS_THROUGH'}
+
+        iterations = iterations + 10
         print("I am at iteration",iterations)
         return {'RUNNING_MODAL'}
 
