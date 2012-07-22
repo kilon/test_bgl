@@ -75,11 +75,12 @@ def draw(self,context):
     bgl.glDisable(bgl.GL_BLEND)
     bgl.glDisable(bgl.GL_TEXTURE_2D)
     texture.gl_free()
+
     # restore opengl defaults
     bgl.glLineWidth(1)
     bgl.glDisable(bgl.GL_BLEND)
     bgl.glColor4f(0.0, 0.0, 0.0, 1.0)
-    #iteration = iterations + 1
+
 
 class open_ephestos(bpy.types.Operator):
     bl_idname = "bg_test_button.modal"
@@ -130,24 +131,6 @@ class open_ephestos(bpy.types.Operator):
             self.report({'WARNING'}, "BGL Test already running ")
             return {'CANCELLED'}
 
-
-class the_world(bpy.types.Operator):
-    bl_idname = "world.toggle"
-    bl_label = "start or stop showing the world"
-
-    def execute(self, context):
-        global world
-        result = {"PASS_THROUGH"}
-        sce = context.scene
-
-        if runing_value:
-            world.running = True
-            sce.world_is_running = False
-        else:
-            world.running = False
-            result = {'FINISHED'}
-            sce.world_is_running = True
-        return result
 
 class bgl_test_panel(bpy.types.Panel):
     bl_label = "BGL Test"
